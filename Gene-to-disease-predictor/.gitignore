@@ -1,0 +1,18 @@
+# Credentials
+.env
+
+# Python folders
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# Data and Models (Optional: only if they are very large)
+# If your .keras file is >100MB, you should ignore it or use Git LFS
+# cleaned_data.csv
+# cleaned_gene_cond.csv
+
+# IDE settings
+.vscode/
+.idea/
