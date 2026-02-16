@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras import backend as K
 from tensorflow.keras.layers import Layer
 from keras.saving import register_keras_serializable
-from Scripts.preprocessing import preprocess_input
+from preprocessing import preprocess_input
 import pickle
 
 # ----------- Load Label Encoder ------------
