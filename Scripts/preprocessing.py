@@ -2,11 +2,22 @@
 
 # This file contains the functions to pre-process the inputs taken from the front end
 
+import sys
+import os
+from pathlib import Path
+
+# Add the project root to sys.path to enable imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 import pickle
 from tensorflow.keras.utils import pad_sequences
 
+# Get the absolute path to the model directory
+MODEL_DIR = os.path.join(project_root, "Model")
+
 # Load tokenizer
-with open("model/tokenizer.pkl", "rb") as f:
+with open(os.path.join(MODEL_DIR, "tokenizer.pkl"), "rb") as f:
     tokenizer = pickle.load(f)
 
 # Set max_len to what was used during training

@@ -1,14 +1,25 @@
+import sys
+import os
+from pathlib import Path
+
+# Add the project root to sys.path to enable imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras import backend as K
 from tensorflow.keras.layers import Layer
 from keras.saving import register_keras_serializable
-from preprocessing import preprocess_input
+from Scripts.preprocessing import preprocess_input
 import pickle
 
+# Get the absolute path to the model directory
+MODEL_DIR = os.path.join(project_root, "Model")
+
 # ----------- Load Label Encoder ------------
-with open("model/label_encoder.pkl", "rb") as f:
+with open(os.path.join(MODEL_DIR, "label_encoder.pkl"), "rb") as f:
     label_encoder = pickle.load(f)
 
 # ----------- Custom Focal Loss ------------
@@ -45,11 +56,11 @@ class Attention(Layer):
 
 # ----------- Load Trained Model ------------
 model = load_model(
-    "model/trained_model_2.keras",
-    # custom_objects={
-    #     "focal_loss": focal_loss(),
-    #     "Attention": Attention
-    # }
+    os.path.join(MODEL_DIR, "trained_model_2.keras"),
+    custom_objects={
+        "focal_loss": focal_loss(),
+        "Attention": Attention
+    }
 )
 
 # ----------- Prediction Function ------------

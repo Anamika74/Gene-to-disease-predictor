@@ -1,9 +1,17 @@
 # This file handles the streamlit front end
 
 # app.py
+import sys
+import os
+from pathlib import Path
+
+# Add the project root to sys.path to enable imports
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
+
 import streamlit as st
-from predictor import predict_top_3
-from gpt_api import fetch_disease_info
+from Scripts.predictor import predict_top_3
+from Scripts.gpt_api import fetch_disease_info
 
 st.set_page_config(page_title="Gene-to-Disease Predictor", layout="centered")
 st.title("🧬 Gene-to-Disease Predictor")
