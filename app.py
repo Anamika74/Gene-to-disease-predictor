@@ -2,7 +2,7 @@
 
 # app.py
 import streamlit as st
-from predictor import predict_top_3
+from Scripts.predictor import predict_top_3
 from gpt_api import fetch_disease_info
 
 st.set_page_config(page_title="Gene-to-Disease Predictor", layout="centered")
